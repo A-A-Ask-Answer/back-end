@@ -1,9 +1,15 @@
+buildscript {
+    ext {
+        queryDslVersion = "5.0.0"
+    }
+}
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.9-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     // querydsl 추가
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+
 }
 
 group = 'a_a'
@@ -20,8 +26,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.querydsl:querydsl-jpa'
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
     runtimeOnly 'com.mysql:mysql-connector-j'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 def querydslDir = "$buildDir/generated/querydsl"
@@ -33,13 +46,16 @@ querydsl {
 sourceSets {
     main.java.srcDir querydslDir
 }
-compileQuerydsl {
+compileQuerydsl{
     options.annotationProcessorPath = configurations.querydsl
 }
+
 configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
     querydsl.extendsFrom compileClasspath
 }
-
 tasks.named('test') {
     useJUnitPlatform()
 }
