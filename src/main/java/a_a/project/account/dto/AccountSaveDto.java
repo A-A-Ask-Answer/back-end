@@ -1,6 +1,6 @@
-package a_a.project.user.dto;
+package a_a.project.account.dto;
 
-import a_a.project.user.entity.User;
+import a_a.project.account.entity.Account;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class UserSaveDto {
+public class AccountSaveDto {
 
     @Getter
     @AllArgsConstructor
@@ -28,11 +28,11 @@ public class UserSaveDto {
         @NotBlank
         private String gender;
 
-        public User toEntity(String password) {
-            return new User(keyword, loginId, password, name);
+        public Account toEntity(String password) {
+            return new Account(keyword, loginId, password, name);
         }
     }
-    
+
     public static class Response {
 
     }
