@@ -1,7 +1,7 @@
 package a_a.project;
 
-import a_a.project.exception.user.UserException;
-import a_a.project.exception.user.UserExceptionResponseEntity;
+import a_a.project.exception.account.AccountException;
+import a_a.project.exception.account.AccountExceptionResponseEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,9 +15,9 @@ import java.util.Map;
 public class ExceptionHandlerControllerAdvice {
 
 
-    @ExceptionHandler(UserException.class)
-    public ResponseEntity<UserExceptionResponseEntity> toUserExceptionResponse(UserException userException) {
-        return UserExceptionResponseEntity.toUserExceptionResponse(userException.getUserErrorCode());
+    @ExceptionHandler(AccountException.class)
+    public ResponseEntity<AccountExceptionResponseEntity> toAccountExceptionResponse(AccountException accountException) {
+        return AccountExceptionResponseEntity.toAccountExceptionResponse(accountException.getAcccountErrorCode());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
