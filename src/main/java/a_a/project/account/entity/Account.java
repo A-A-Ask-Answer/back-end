@@ -1,7 +1,7 @@
-package a_a.project.user.entity;
+package a_a.project.account.entity;
 
-import a_a.project.user.entity.type.Gender;
-import a_a.project.user.entity.type.Role;
+import a_a.project.account.entity.type.Gender;
+import a_a.project.account.entity.type.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class User {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,7 +32,7 @@ public class User {
 
     private boolean isActive; // 탈퇴여부
 
-    public User(String keyWord, String loginId, String password, String name) {
+    public Account(String keyWord, String loginId, String password, String name) {
         this.keyWord = keyWord;
         this.loginId = loginId;
         this.password = password;
