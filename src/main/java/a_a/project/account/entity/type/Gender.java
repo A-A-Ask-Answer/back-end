@@ -1,4 +1,4 @@
-package a_a.project.user.entity.type;
+package a_a.project.account.entity.type;
 
 public enum Gender {
     MALE, FEMALE
