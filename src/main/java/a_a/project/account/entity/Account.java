@@ -1,5 +1,6 @@
 package a_a.project.account.entity;
 
+import a_a.project.BaseEntity;
 import a_a.project.account.entity.type.Gender;
 import a_a.project.account.entity.type.Role;
 import lombok.Getter;
@@ -10,7 +11,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Account {
+
+public class Account extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
