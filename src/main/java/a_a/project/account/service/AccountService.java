@@ -31,7 +31,7 @@ public class AccountService {
             throw new AccountException(AcccountErrorCode.NOT_EQUALS_PASSWORD_CONFIRM_PASSWORD);
         }
         Account account = request.toEntity(sha256.encrypt(request.getPassword()));
-        if (request.getGender().equals("MALE")) {
+        if (request.getGender().equalsIgnoreCase("male")) {
             account.gender(Gender.MALE);
         } else {
             account.gender(Gender.FEMALE);
