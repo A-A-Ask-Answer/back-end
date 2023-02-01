@@ -1,6 +1,7 @@
 package aa.project.account.dto;
 
 import aa.project.account.entity.Account;
+import aa.project.account.entity.type.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,10 @@ public class AccountSaveDto {
         @Size(min = 3, max = 5)
         private String keyword;
         @NotBlank
-        private String gender;
+        private Gender gender;
 
         public Account toEntity(String password) {
-            return new Account(keyword, loginId, password, name);
+            return new Account(keyword, loginId, password, name, gender);
         }
     }
 
