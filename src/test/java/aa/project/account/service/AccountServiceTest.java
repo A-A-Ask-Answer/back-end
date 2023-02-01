@@ -1,6 +1,5 @@
 package aa.project.account.service;
 
-import aa.project.account.entity.Account;
 import aa.project.account.repository.AccountRepository;
 import aa.project.exception.account.AccountException;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +24,7 @@ class AccountServiceTest {
 
     @BeforeEach
     public void setting() {
-        accountRepository.save(new Account("일요일", "test1", "1234", "hoestory"));
+        // accountRepository.save(new Account("일요일", "test1", "1234", "hoestory"));
     }
 
 

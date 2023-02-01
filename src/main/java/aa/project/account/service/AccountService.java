@@ -3,7 +3,6 @@ package aa.project.account.service;
 import aa.project.account.dto.AccountLoginDto;
 import aa.project.account.dto.AccountSaveDto;
 import aa.project.account.entity.Account;
-import aa.project.account.entity.type.Gender;
 import aa.project.account.repository.AccountRepository;
 import aa.project.exception.account.AcccountErrorCode;
 import aa.project.exception.account.AccountException;
@@ -31,11 +30,6 @@ public class AccountService {
             throw new AccountException(AcccountErrorCode.NOT_EQUALS_PASSWORD_CONFIRM_PASSWORD);
         }
         Account account = request.toEntity(sha256.encrypt(request.getPassword()));
-        if (request.getGender().equalsIgnoreCase("male")) {
-            account.gender(Gender.MALE);
-        } else {
-            account.gender(Gender.FEMALE);
-        }
 
         accountRepository.save(account);
 
