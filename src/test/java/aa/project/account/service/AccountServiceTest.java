@@ -1,8 +1,7 @@
-package a_a.project.account.service;
+package aa.project.account.service;
 
 import aa.project.account.entity.Account;
 import aa.project.account.repository.AccountRepository;
-import aa.project.account.service.AccountService;
 import aa.project.exception.account.AccountException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
