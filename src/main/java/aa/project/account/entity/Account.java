@@ -3,7 +3,6 @@ package aa.project.account.entity;
 import aa.project.BaseEntity;
 import aa.project.account.entity.type.Gender;
 import aa.project.account.entity.type.Role;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -16,7 +15,6 @@ import javax.persistence.Enumerated;
 @Entity
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Account extends BaseEntity {
 
     @Column(unique = true, nullable = false)
