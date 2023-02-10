@@ -23,5 +23,4 @@ class AccountTest {
         assertThat(account.isActive()).isFalse();
         assertThat(account.getRole()).isEqualTo(Role.USER);
     }
-
 }
