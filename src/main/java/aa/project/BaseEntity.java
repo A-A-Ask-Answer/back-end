@@ -18,8 +18,8 @@ public abstract class BaseEntity {
     protected Long id;
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    protected LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    protected LocalDateTime updatedAt;
 }
