@@ -26,7 +26,6 @@ public class AccountSaveDto {
         @NotBlank
         @Size(min = 3, max = 5)
         private String keyword;
-        @NotBlank
         private Gender gender;
 
         public Account toEntity(String password) {
