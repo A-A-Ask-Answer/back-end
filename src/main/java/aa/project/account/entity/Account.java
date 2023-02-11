@@ -17,10 +17,10 @@ import javax.persistence.Enumerated;
 @NoArgsConstructor
 public class Account extends BaseEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 10)
     private String keyWord;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 15)
     private String loginId;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class Account extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
-
+    
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -47,7 +47,9 @@ public class Account extends BaseEntity {
         this.password = password;
         this.name = name;
         this.gender = gender;
-        this.role = Role.USER;
     }
 
+    public void createdAccountRole(Role role) {
+        this.role = role;
+    }
 }
