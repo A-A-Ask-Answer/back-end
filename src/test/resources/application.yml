@@ -6,9 +6,10 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
