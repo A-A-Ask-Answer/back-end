@@ -12,6 +12,7 @@ plugins {
 
 }
 
+
 group = 'a_a'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -28,15 +29,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
     runtimeOnly 'com.mysql:mysql-connector-j'
     compileOnly 'org.projectlombok:lombok'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     runtimeOnly 'com.h2database:h2'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
     implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
     // redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.session:spring-session-data-redis'

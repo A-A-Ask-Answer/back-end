@@ -1,15 +1,17 @@
 package aa.project.account.repository;
 
 import aa.project.account.entity.Account;
-import org.springframework.data.jpa.repository.JpaRepository;
+import aa.project.common.BaseRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface AccountRepository extends JpaRepository<Account, Long> {
+@Repository
+public interface AccountRepository extends BaseRepository<Account, Long> {
 
     boolean existsByLoginId(String loginId);
 
-    boolean existsByKeyWord(String keyWord);
+    boolean existsByKeyword(String keyword);
 
     Optional<Account> findByLoginId(String loginId);
 

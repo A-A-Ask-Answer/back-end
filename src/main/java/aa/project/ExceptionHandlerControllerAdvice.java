@@ -14,10 +14,9 @@ import java.util.Map;
 @RestControllerAdvice
 public class ExceptionHandlerControllerAdvice {
 
-
     @ExceptionHandler(AccountException.class)
     public ResponseEntity<AccountExceptionResponseEntity> toAccountExceptionResponse(AccountException accountException) {
-        return AccountExceptionResponseEntity.toAccountExceptionResponse(accountException.getAcccountErrorCode());
+        return AccountExceptionResponseEntity.toAccountExceptionResponse(accountException.getAccountErrorCode());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -27,6 +26,5 @@ public class ExceptionHandlerControllerAdvice {
                 .forEach(c -> error.put(((FieldError) c).getField(), c.getDefaultMessage()));
         return ResponseEntity.badRequest().body(error);
     }
-
 
 }

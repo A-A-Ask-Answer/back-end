@@ -1,14 +1,12 @@
 package aa.project.account.controller;
 
-import aa.project.account.config.LoginUser;
 import aa.project.account.dto.AccountLoginDto;
 import aa.project.account.dto.AccountSaveDto;
-import aa.project.account.entity.Account;
-import aa.project.account.repository.AccountRepository;
 import aa.project.account.service.AccountService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +24,6 @@ import java.security.NoSuchAlgorithmException;
 public class AccountController {
     private final AccountService accountService;
 
-    private final AccountRepository accountRepository;
-
     @ApiOperation(value = "회원가입")
     @PostMapping("/new")
     public String newAccountSave(@Valid @RequestBody AccountSaveDto.Request request) throws NoSuchAlgorithmException {
@@ -41,30 +37,28 @@ public class AccountController {
     }
 
     @ApiOperation(value = "키워드 중복확인")
-    @GetMapping("/key-word/duplicate")
+    @GetMapping("/keyword/duplicate")
     public String duplicateKeyword(@RequestParam @Size(min = 3, max = 5) String keyword) {
         return accountService.duplicateKeyword(keyword);
     }
 
+    @ApiOperation(value = "회원 탈퇴")
+    @DeleteMapping
+    public ResponseEntity deleteAccount(HttpSession session, @RequestParam String keyword) {
+        return accountService.deleteAccount(session, keyword);
+    }
+
     @ApiOperation(value = "로그인")
-    @PostMapping("/login-test")
+    @PostMapping("/login")
     public String login(@RequestBody AccountLoginDto.LoginRequest loginRequest, HttpSession httpSession) throws NoSuchAlgorithmException {
 
         return accountService.login(loginRequest, httpSession);
     }
 
-    @ApiOperation(value = "로그인정보 확인")
-    @GetMapping("/login-info")
-    public Account loginInfo(@LoginUser AccountLoginDto.Login login) {
-        Account account = accountRepository.findByLoginId(login.getLoginId()).orElse(null);
-        return account;
+    @ApiOperation("로그아웃")
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().body("로그아웃");
     }
-
-    @ApiOperation(value = "로그인정보 확인")
-    @GetMapping("/login-delete")
-    public void loginDelete(HttpSession httpSession) {
-        httpSession.invalidate();
-    }
-
-
 }

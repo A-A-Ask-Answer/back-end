@@ -1,4 +1,4 @@
-package aa.project;
+package aa.project.common;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,8 +18,13 @@ public abstract class BaseEntity {
     protected Long id;
 
     @CreatedDate
+    @Column(nullable = false, updatable = false)
     protected LocalDateTime createdAt;
 
     @LastModifiedDate
+    @Column(nullable = false)
     protected LocalDateTime updatedAt;
+
+    @Column(nullable = true)
+    protected LocalDateTime deletedAt;
 }

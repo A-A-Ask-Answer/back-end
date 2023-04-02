@@ -18,13 +18,13 @@ public class AccountExceptionResponseEntity {
     private final String error;
 
 
-    public static ResponseEntity<AccountExceptionResponseEntity> toAccountExceptionResponse(AcccountErrorCode acccountErrorCode) {
-        return ResponseEntity.status(acccountErrorCode.getStatus())
+    public static ResponseEntity<AccountExceptionResponseEntity> toAccountExceptionResponse(AccountErrorCode accountErrorCode) {
+        return ResponseEntity.status(accountErrorCode.getStatus())
                 .body(AccountExceptionResponseEntity.builder()
-                        .code(acccountErrorCode.name())
-                        .status(acccountErrorCode.getStatus().value())
-                        .message(acccountErrorCode.getMessage())
-                        .error(acccountErrorCode.getStatus().name())
+                        .code(accountErrorCode.name())
+                        .status(accountErrorCode.getStatus().value())
+                        .message(accountErrorCode.getMessage())
+                        .error(accountErrorCode.getStatus().name())
                         .build());
     }
 }
