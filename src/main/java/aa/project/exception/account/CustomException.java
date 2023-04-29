@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class AccountException extends RuntimeException {
-    private final AcccountErrorCode acccountErrorCode;
+public class CustomException extends RuntimeException {
+    private final ErrorCode errorCode;
 }
