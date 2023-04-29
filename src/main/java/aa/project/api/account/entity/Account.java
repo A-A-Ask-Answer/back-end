@@ -1,8 +1,8 @@
-package aa.project.account.entity;
+package aa.project.api.account.entity;
 
 import aa.project.BaseEntity;
-import aa.project.account.entity.type.Gender;
-import aa.project.account.entity.type.Role;
+import aa.project.api.account.entity.type.Gender;
+import aa.project.api.account.entity.type.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -28,7 +28,7 @@ public class Account extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
-    
+
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Role role;
